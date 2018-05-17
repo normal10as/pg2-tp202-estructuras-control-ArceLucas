@@ -16,9 +16,7 @@
                 Console.WriteLine("Angulo Llano")
             Case 181 To 359
                 Console.WriteLine("Angulo Concavo")
-            Case Is < 0
-                Console.WriteLine("Angulo Error")
-            Case Is > 360
+            Case Is < 0, Is > 360
                 Console.WriteLine("Angulo Error")
         End Select
 
