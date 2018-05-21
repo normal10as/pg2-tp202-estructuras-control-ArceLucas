@@ -15,11 +15,14 @@
     End Enum
     Sub main()
         Dim mes As meses
+        Dim n As Byte
 
         Console.Write("Ingrese un numero del 1 al 12: ")
-        mes = Console.ReadLine()
+        n = Console.ReadLine()
 
-        Select Case mes
+        mes = n
+
+        Select Case n
             Case 1
                 Console.WriteLine("El numero corresponde al mes: " & mes.ToString)
             Case 2

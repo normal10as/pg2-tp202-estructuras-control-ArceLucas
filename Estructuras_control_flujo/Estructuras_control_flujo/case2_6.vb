@@ -3,6 +3,7 @@
         Dim cant As UShort
         Dim precio_uni As Single
         Dim subtotal As Single
+        Dim porcentajeDesc As Byte
 
         Console.Write("Ingrese cantidad: ")
         cant = Console.ReadLine()
@@ -13,25 +14,29 @@
         subtotal = cant * precio_uni
 
         Select Case cant
-            Case 10 To 50
-                Console.WriteLine("Subtotal: " & subtotal)
-                Console.WriteLine("% de descuentoaplicado: 5%")
-                Console.WriteLine("Monto descontado: " & subtotal * 0.05)
-                Console.WriteLine("Total: " & subtotal - subtotal * 0.05)
-            Case 51 To 250
-                Console.WriteLine("Subtotal: " & subtotal)
-                Console.WriteLine("% de descuentoaplicado: 10%")
-                Console.WriteLine("Monto descontado: " & subtotal * 0.1)
-                Console.WriteLine("Total: " & subtotal - subtotal * 0.1)
-            Case Is > 205
-                Console.WriteLine("Subtotal: " & subtotal)
-                Console.WriteLine("% de descuentoaplicado: 20%")
-                Console.WriteLine("Monto descontado: " & subtotal * 0.2)
-                Console.WriteLine("Total: " & subtotal - subtotal * 0.2)
             Case Is < 10
-                Console.WriteLine("cantidad invalida")
+                porcentajeDesc = 1
+            Case 10 To 50
+                porcentajeDesc = 5
+            Case 51 To 250
+                porcentajeDesc = 10
+            Case Is > 205
+                porcentajeDesc = 20
         End Select
 
+        If porcentajeDesc = 1 Then
+            Console.WriteLine("Subtotal: " & subtotal)
+            Console.WriteLine("% de descuentoaplicado: 0%")
+            Console.WriteLine("Monto descontado: No posee descuento")
+            Console.WriteLine("Total: " & subtotal)
+        Else
+            Console.WriteLine("Subtotal: " & subtotal)
+            Console.WriteLine("% de descuentoaplicado: {0}%", porcentajeDesc)
+            Console.WriteLine("Monto descontado: " & subtotal * porcentajeDesc / 100)
+            Console.WriteLine("Total: " & subtotal - subtotal * porcentajeDesc / 100)
+        End If
+
         Console.ReadKey()
+
     End Sub
 End Module
