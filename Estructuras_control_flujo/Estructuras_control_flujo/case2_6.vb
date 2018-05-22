@@ -15,7 +15,7 @@
 
         Select Case cant
             Case Is < 10
-                porcentajeDesc = 1
+                porcentajeDesc = 0
             Case 10 To 50
                 porcentajeDesc = 5
             Case 51 To 250
@@ -24,17 +24,10 @@
                 porcentajeDesc = 20
         End Select
 
-        If porcentajeDesc = 1 Then
-            Console.WriteLine("Subtotal: " & subtotal)
-            Console.WriteLine("% de descuentoaplicado: 0%")
-            Console.WriteLine("Monto descontado: No posee descuento")
-            Console.WriteLine("Total: " & subtotal)
-        Else
-            Console.WriteLine("Subtotal: " & subtotal)
-            Console.WriteLine("% de descuentoaplicado: {0}%", porcentajeDesc)
-            Console.WriteLine("Monto descontado: " & subtotal * porcentajeDesc / 100)
-            Console.WriteLine("Total: " & subtotal - subtotal * porcentajeDesc / 100)
-        End If
+        Console.WriteLine("Subtotal: " & subtotal)
+        Console.WriteLine("% de descuentoaplicado: {0}%", porcentajeDesc)
+        Console.WriteLine("Monto descontado: " & subtotal * porcentajeDesc / 100)
+        Console.WriteLine("Total: " & subtotal - subtotal * porcentajeDesc / 100)
 
         Console.ReadKey()
 

@@ -12,7 +12,6 @@
         Dim total_cobrar As Single
 
         Do
-
             Console.Write("Ingrese cantidad: ")
             cant = Console.ReadLine()
 
@@ -26,29 +25,21 @@
             subtotal = cant * precio_uni
 
             If cant < 10 Then
-                porcentajeDesc = 1
+                porcentajeDesc = 0
             ElseIf cant >= 10 And cant <= 50 Then
-            porcentajeDesc = 5
+                porcentajeDesc = 5
             ElseIf cant >= 51 And cant <= 250 Then
                 porcentajeDesc = 10
             ElseIf cant > 250 Then
                 porcentajeDesc = 20
             End If
 
-            If porcentajeDesc = 1 Then
-                Console.WriteLine("Subtotal: " & subtotal)
-                Console.WriteLine("% de descuentoaplicado: 0%")
-                Console.WriteLine("Monto descontado: No posee descuento")
-                Console.WriteLine("Total: " & subtotal)
-                total_cobrar += subtotal
-            Else
-                Console.WriteLine("Subtotal: " & subtotal)
-                Console.WriteLine("% de descuentoaplicado: {0}%", porcentajeDesc)
-                Console.WriteLine("Monto descontado: " & subtotal * porcentajeDesc / 100)
-                Console.WriteLine("Total: " & subtotal - subtotal * porcentajeDesc / 100)
-                total_descontado += subtotal * porcentajeDesc / 100
-                total_cobrar += subtotal - subtotal * porcentajeDesc / 100
-            End If
+            Console.WriteLine("Subtotal: " & subtotal)
+            Console.WriteLine("% de descuentoaplicado: {0}%", porcentajeDesc)
+            Console.WriteLine("Monto descontado: " & subtotal * porcentajeDesc / 100)
+            Console.WriteLine("Total: " & subtotal - subtotal * porcentajeDesc / 100)
+            total_descontado += subtotal * porcentajeDesc / 100
+            total_cobrar += subtotal - subtotal * porcentajeDesc / 100
 
         Loop While cant <> 0
 
